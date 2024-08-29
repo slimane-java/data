@@ -1,0 +1,26 @@
+server:
+  port: ${SERVER_PORT:8085}
+  servlet:
+    contextPath: ${CONTEXT_PATH:/api}
+spring:
+  datasource:
+    password: ${DATABASE_PASSWORD:peAqockPostgres312}
+    username: ${DATABASE_USERNAME:peaqock}
+    url: jdbc:postgresql://${DATABASE_URL:peaqock.com}:${DATABASE_PORT:54320}/${DATABASE_NAME:fraud_db}
+    driver-class-name: org.postgresql.Driver
+  profiles:
+    active: local
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc.batch_size: 30
+        order_inserts: true
+        jdbc.time_zone: UTC
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        types.print.banner: false
+        format_sql: true
